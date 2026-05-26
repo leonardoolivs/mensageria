@@ -1,5 +1,6 @@
 package br.com.boleto.entities;
 
+import br.com.boleto.entities.enums.StatusBoleto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
