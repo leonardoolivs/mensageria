@@ -2,6 +2,7 @@ package br.com.boleto.services;
 
 import br.com.boleto.dtos.BoletoDTO;
 import br.com.boleto.entities.Boleto;
+import br.com.boleto.exceptions.RegraNegocioException;
 import br.com.boleto.mappers.BoletoMapper;
 import br.com.boleto.repositories.BoletoRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +19,7 @@ public class BoletoService {
     @Transactional
     public BoletoDTO criar(Boleto boleto){
         if(repository.existsByCodigoBarras(boleto.getCodigoBarras())){
-            System.out.println("Ja existe meu véio, tenta outro código ai painho");
+            throw new RegraNegocioException(String.format("Código de barras '%s' já existe", boleto.getCodigoBarras()));
         }
 
         boleto = repository.save(boleto);
