@@ -1,6 +1,8 @@
 package br.com.boleto.services;
 
+import br.com.boleto.dtos.BoletoDTO;
 import br.com.boleto.entities.Boleto;
+import br.com.boleto.mappers.BoletoMapper;
 import br.com.boleto.repositories.BoletoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -11,13 +13,16 @@ import org.springframework.transaction.annotation.Transactional;
 public class BoletoService {
 
     private final BoletoRepository repository;
+    private final BoletoMapper mapper;
 
     @Transactional
-    public Boleto criar(Boleto boleto){
+    public BoletoDTO criar(Boleto boleto){
         if(repository.existsByCodigoBarras(boleto.getCodigoBarras())){
             System.out.println("Ja existe meu véio, tenta outro código ai painho");
         }
 
-        return repository.save(boleto);
+        boleto = repository.save(boleto);
+
+        return mapper.toDTO(boleto);
     }
 }
