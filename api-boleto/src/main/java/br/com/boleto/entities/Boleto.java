@@ -19,10 +19,11 @@ public class Boleto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "codigo_barras")
+    @Column(name = "codigo_barras", unique = true)
     private String codigoBarras;
 
     @Column(name = "status")
+    @Enumerated(EnumType.STRING)
     private StatusBoleto status;
 
     @Column(name = "data_criacao")
@@ -30,5 +31,11 @@ public class Boleto {
 
     @Column(name = "data_atualizacao")
     private LocalDateTime dataAtualizacao;
+
+    @PrePersist
+    public void prePersist(){
+        status = StatusBoleto.CRIADO;
+        dataCriacao = LocalDateTime.now();
+    }
 
 }
