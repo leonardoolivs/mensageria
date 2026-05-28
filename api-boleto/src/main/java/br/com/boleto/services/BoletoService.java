@@ -4,6 +4,7 @@ import br.com.boleto.dtos.BoletoDTO;
 import br.com.boleto.entities.Boleto;
 import br.com.boleto.exceptions.RegraNegocioException;
 import br.com.boleto.mappers.BoletoMapper;
+import br.com.boleto.producers.BoletoProducer;
 import br.com.boleto.repositories.BoletoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class BoletoService {
 
     private final BoletoRepository repository;
+    private final BoletoProducer producer;
     private final BoletoMapper mapper;
 
     @Transactional
@@ -24,6 +26,10 @@ public class BoletoService {
 
         boleto = repository.save(boleto);
 
-        return mapper.toDTO(boleto);
+        BoletoDTO dto = mapper.toDTO(boleto);
+
+        producer.enviarMensagem(dto);
+
+        return dto;
     }
 }
