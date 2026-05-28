@@ -3,6 +3,7 @@ package br.com.boleto.controllers;
 import br.com.boleto.dtos.BoletoDTO;
 import br.com.boleto.entities.Boleto;
 import br.com.boleto.services.BoletoService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +22,7 @@ public class BoletoController {
     private final BoletoService service;
 
     @PostMapping
-    public ResponseEntity<BoletoDTO> criar(@RequestBody Boleto boleto){
+    public ResponseEntity<BoletoDTO> criar(@Valid @RequestBody Boleto boleto){
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(boleto.getId()).toUri();
 
