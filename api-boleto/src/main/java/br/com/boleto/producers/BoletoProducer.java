@@ -1,6 +1,7 @@
 package br.com.boleto.producers;
 
 import br.com.boleto.dtos.BoletoDTO;
+import br.com.rocha.avro.BoletoAvro;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -13,9 +14,9 @@ public class BoletoProducer {
     @Value("${spring.kafka.topico-boleto}")
     public String topico;
 
-    private final KafkaTemplate<String, BoletoDTO> kafkaTemplate;
+    private final KafkaTemplate<String, BoletoAvro> kafkaTemplate;
 
-    public void enviarMensagem(BoletoDTO dto){
-        kafkaTemplate.send(topico, dto);
+    public void enviarMensagem(BoletoAvro avro){
+        kafkaTemplate.send(topico, avro);
     }
 }

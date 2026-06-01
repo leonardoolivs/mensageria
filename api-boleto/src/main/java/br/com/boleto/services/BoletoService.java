@@ -25,10 +25,9 @@ public class BoletoService {
         }
 
         boleto = repository.save(boleto);
-        BoletoDTO dto = mapper.toDTO(boleto);
 
-        producer.enviarMensagem(dto);
+        producer.enviarMensagem(mapper.toAvro(boleto));
 
-        return dto;
+        return mapper.toDTO(boleto);
     }
 }

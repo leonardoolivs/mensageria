@@ -2,6 +2,7 @@ package br.com.boleto.mappers;
 
 import br.com.boleto.dtos.BoletoDTO;
 import br.com.boleto.entities.Boleto;
+import br.com.rocha.avro.BoletoAvro;
 import org.mapstruct.Mapper;
 import org.springframework.stereotype.Component;
 
@@ -12,5 +13,7 @@ public interface BoletoMapper {
     BoletoDTO toDTO(Boleto boleto);
 
     Boleto toEntity(BoletoDTO dto);
+
+    BoletoAvro toAvro(Boleto boleto);
 
 }
