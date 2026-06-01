@@ -1,6 +1,7 @@
 package br.com.validador.kafka;
 
 import org.slf4j.Logger;
+import br.com.avro.BoletoAvro;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
