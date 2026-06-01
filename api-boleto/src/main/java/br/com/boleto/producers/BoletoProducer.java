@@ -1,7 +1,7 @@
 package br.com.boleto.producers;
 
 import br.com.boleto.dtos.BoletoDTO;
-import br.com.rocha.avro.BoletoAvro;
+import br.com.avro.BoletoAvro;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
