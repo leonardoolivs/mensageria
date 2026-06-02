@@ -34,8 +34,12 @@ public class Boleto {
 
     @PrePersist
     public void prePersist(){
-        status = StatusBoleto.CRIADO;
         dataCriacao = LocalDateTime.now();
+    }
+
+    public Boleto(String codigoBarras, StatusBoleto status){
+        this.codigoBarras = codigoBarras;
+        this.status = status;
     }
 
 }
