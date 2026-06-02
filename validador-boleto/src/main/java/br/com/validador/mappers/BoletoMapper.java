@@ -11,4 +11,10 @@ public class BoletoMapper {
                 avro.getCodigoBarras().toString(),
                 StatusBoleto.values()[avro.getSituacaoBoleto()]);
     }
+
+    public static BoletoAvro toAvro(Boleto boleto){
+        return new BoletoAvro(
+                boleto.getCodigoBarras(),
+                boleto.getStatus().ordinal());
+    }
 }
