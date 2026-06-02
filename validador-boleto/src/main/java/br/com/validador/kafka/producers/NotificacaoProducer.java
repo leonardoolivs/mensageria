@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class NotificacaoProducer {
 
-    @Value("${spring.kafka.notificacao-boleto}")
+    @Value("${spring.kafka.topico-notificacao}")
     public String topico;
 
     private final KafkaTemplate<String, BoletoAvro> kafkaTemplate;
