@@ -1,4 +1,4 @@
-package br.com.validador.kafka;
+package br.com.validador.kafka.consumers;
 
 import br.com.validador.mappers.BoletoMapper;
 import br.com.validador.services.BoletoService;
