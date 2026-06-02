@@ -13,7 +13,7 @@ public class BoletoConsumer {
 
     @KafkaListener(topics = "${spring.kafka.topico-boleto}", groupId = "${spring.kafka.consumer.group-id}")
     public void consomeBoleto(BoletoAvro boleto){
-        logger.info("Consumindo mensagem -> %s", boleto);
+        logger.info("Consumindo mensagem -> {}", boleto);
     }
 
 }
